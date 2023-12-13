@@ -10,4 +10,7 @@ import java.util.List;
 public interface CandidateRepository extends JpaRepository<Candidate, Long> {
     @Query("SELECT c FROM Candidate c JOIN c.experiences e WHERE e.company = :company")
     List<Candidate> findCandidatesByCompany(@Param("company") String company);
+
+    @Query("SELECT c FROM Candidate c WHERE (SELECT SUM(YEAR(e.toDate) - YEAR(e.fromDate)) FROM Experience e WHERE e.candidate = c) >= 5")
+    List<Candidate> findCandidatesWithAtLeastFiveYearsExperience();
 }

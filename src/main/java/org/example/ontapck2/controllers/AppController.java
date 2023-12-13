@@ -58,7 +58,14 @@ public class AppController {
     }
 
     @GetMapping("/report2")
-    public String report2() {
+    public String report2(
+            Model model
+    ) {
+        List<Candidate> candidates = candidateService.getCandidateGT5Experience();
+
+        System.out.println("candidates: " + candidates);
+
+        model.addAttribute("candidates", candidates);
         return "report2";
     }
 }

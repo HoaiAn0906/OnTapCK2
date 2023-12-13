@@ -22,4 +22,8 @@ public class CandidateService {
     public List<Candidate> getCandidateByCompany(String company) {
         return candidateRepository.findCandidatesByCompany(company);
     }
+
+    public List<Candidate> getCandidateGT5Experience() {
+        return candidateRepository.findCandidatesWithAtLeastFiveYearsExperience();
+    }
 }
