@@ -13,6 +13,6 @@ public class ExperienceService {
     private final ExperienceRepository experienceRepository;
 
     public List<Experience> getExperienceByCandidateId(Long canId) {
-        return experienceRepository.findByCandidate_CanId(canId);
+        return experienceRepository.findByCanId(canId);
     }
 }

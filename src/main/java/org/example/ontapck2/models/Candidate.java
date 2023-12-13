@@ -26,7 +26,7 @@ public class Candidate {
 
     private String phone;
 
-    @OneToMany(mappedBy = "candidate", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "candidate", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Experience> experiences;
 
     public Candidate(String email, String fullName, String phone, List<Experience> experiences) {

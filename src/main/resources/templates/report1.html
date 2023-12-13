@@ -10,9 +10,6 @@
     <input type="text" name="company" placeholder="company">
     <button type="submit">Search</button>
     <div th:switch="${candidates}">
-        <div th:case="${candidates.size < 1}">
-            <span>No data</span>
-        </div>
         <div th:case="*">
             <div th:each="candidate : ${candidates}">
                 <span th:text="${candidate.email}"></span>

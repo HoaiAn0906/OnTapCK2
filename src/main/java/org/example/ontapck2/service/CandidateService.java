@@ -7,6 +7,7 @@ import org.example.ontapck2.repositories.CandidateRepository;
 import org.example.ontapck2.repositories.ExperienceRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -24,6 +25,18 @@ public class CandidateService {
     }
 
     public List<Candidate> getCandidateGT5Experience() {
-        return candidateRepository.findCandidatesWithAtLeastFiveYearsExperience();
+        List<Experience> experiences = experienceRepository.findAll();
+        ArrayList<Long> canIds = new ArrayList<>();
+
+        for(Experience ex : experiences) {
+            if (ex.getToDate().getYear() - ex.getFromDate().getYear() >= 5) {
+                canIds.add(ex.getCandidate().getCanId());
+            }
+        }
+
+        List<Candidate> candidates;
+        candidates = candidateRepository.getAllByCanIds(canIds);
+
+        return candidates;
     }
 }

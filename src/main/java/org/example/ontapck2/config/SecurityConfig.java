@@ -43,7 +43,7 @@ public class SecurityConfig {
                 auth
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/report2").hasRole("ADMIN")
-                        .requestMatchers("/index", "/candidate", "/report1").hasRole("USER")
+                        .requestMatchers("/index", "/candidate/**", "/report1").hasRole("USER")
                         .anyRequest().authenticated()
         );
         http.formLogin(Customizer.withDefaults());
