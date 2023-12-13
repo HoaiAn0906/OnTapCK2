@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Can details</h1>
+<div th:each="experience : ${experiences}">
+    <span th:text="${experience.company}"></span>
+    <span th:text="${experience.fromDate}"></span>
+    <span th:text="${experience.toDate}"></span>
+    <span th:text="${experience.workDesc}"></span>
+    <span th:text="${experience.role}"></span>
+    <br>
+</div>
+</body>
+</html>

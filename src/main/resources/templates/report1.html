@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>report 1</h1>
+<form th:action="@{/report1}" method="get">
+    <input type="text" name="company" placeholder="company">
+    <button type="submit">Search</button>
+    <div th:switch="${candidates}">
+        <div th:case="${candidates.size < 1}"></div>
+        <div th:case="*">
+            <div th:each="candidate : ${candidates}">
+                <span th:text="${candidate.email}"></span>
+                <span th:text="${candidate.phone}"></span>
+                <br>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>
